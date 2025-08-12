@@ -20,12 +20,14 @@ def basic_flood_prediction_example():
         n_estimators=200,
         max_depth=15
     )
+    # Pass optimize_hyperparameters during training, not construction
+    predictor.train(..., optimize_hyperparameters=True)
     
     print(f"✅ Initialized predictor for USGS site {predictor.usgs_site}")
     print(f"📍 Location: {predictor.lat:.4f}, {predictor.lon:.4f}")
     print(f"⚠️  Flood stage: {predictor.flood_stage_ft} feet")
     print("🔧 Training with hyperparameter optimization...")
-    predictor.train(..., optimize_hyperparameters=True)
+    
 
     # Train model on recent data (last 2 years)
     print("\n📚 Training model...")
