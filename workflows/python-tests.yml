@@ -1,0 +1,41 @@
+name: Run FLOODML Test Suite
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11"]
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+          pip install pytest pytest-cov
+          # if you need extra deps
+          pip install dataretrieval hydrofunctions hyswap nwsapy scikit-learn tensorflow shap structlog
+
+      - name: 🧪 Run tests
+        run: |
+          pytest -v --maxfail=5 --disable-warnings --cov=floodml tests/
+
+      - name: 📊 Upload coverage to GitHub summary
+        run: |
+          echo "### Test Coverage Summary" >> $GITHUB_STEP_SUMMARY
+          coverage report >> $GITHUB_STEP_SUMMARY || true
