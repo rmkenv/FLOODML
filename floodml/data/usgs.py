@@ -36,14 +36,14 @@ class USGSCollector:
     
     def get_site_info(self) -> Dict[str, Any]:
         """
-        Get site information and metadata, with defensive handling for tuple/empty returns.
+        Get site information with robust handling for tuple results.
         """
         try:
             site_info = nwis.get_info(sites=self.site)
-            
-            # Handle case where a tuple is returned instead of a DataFrame
+
+            # Handle tuple return type
             if isinstance(site_info, tuple):
-                # Find first tuple element that looks like a DataFrame
+                # pick the first element in the tuple that has `.empty`
                 df_obj = next((item for item in site_info if hasattr(item, 'empty')), None)
                 if df_obj is None:
                     logger.error("Site info fetch returned tuple without DataFrame", site=self.site)
@@ -60,7 +60,7 @@ class USGSCollector:
         except Exception as e:
             logger.error("Failed to get site info", site=self.site, error=str(e))
             return {}
-    
+
     def get_daily_streamflow(
         self, 
         start_date: str, 
@@ -79,6 +79,15 @@ class USGSCollector:
                 start=start_date,
                 end=end_date
             )
+
+            # Handle tuple return type
+            if isinstance(df, tuple):
+                df_obj = next((item for item in df if hasattr(item, 'empty')), None)
+                if df_obj is None:
+                    logger.error("Daily streamflow fetch returned tuple without DataFrame", site=self.site)
+                    return pd.DataFrame()
+                df = df_obj
+
             if df.empty:
                 logger.warning("No daily data found", site=self.site)
                 return pd.DataFrame()
@@ -191,6 +200,7 @@ class USGSCollector:
         try:
             info = nwis.get_info(sites=self.site, parameterCd='all')
             
+            # Defensive tuple handling for parameter info as well
             if isinstance(info, tuple):
                 df_obj = next((item for item in info if hasattr(item, 'empty')), None)
                 if df_obj is None:
