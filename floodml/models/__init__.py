@@ -4,14 +4,30 @@ Machine learning models for FloodML
 
 from .base import BaseFloodModel
 from .random_forest import RandomForestFloodModel
-from .lstm import LSTMFloodModel
-from .ensemble import EnsembleFloodModel
-from .evaluation import ModelEvaluator
+
+try:
+    from .lstm import LSTMFloodModel
+except ImportError:
+    LSTMFloodModel = None
+
+try:
+    from .ensemble import EnsembleFloodModel
+except ImportError:
+    EnsembleFloodModel = None
+
+try:
+    from .evaluation import ModelEvaluator
+except ImportError:
+    ModelEvaluator = None
 
 __all__ = [
     "BaseFloodModel",
-    "RandomForestFloodModel",
-    "LSTMFloodModel", 
-    "EnsembleFloodModel",
-    "ModelEvaluator",
+    "RandomForestFloodModel"
 ]
+
+if LSTMFloodModel is not None:
+    __all__.append("LSTMFloodModel")
+if EnsembleFloodModel is not None:
+    __all__.append("EnsembleFloodModel")
+if ModelEvaluator is not None:
+    __all__.append("ModelEvaluator")
