@@ -19,9 +19,9 @@ setup(
     description="Machine Learning for Flood Prediction using USGS and NWS data",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/floodml",
+    url="https://github.com/rmkenv/FLOODML",
     project_urls={
-        "Bug Tracker": "https://github.com/yourusername/floodml/issues",
+        "Bug Tracker": "https://github.com/rmkenv/FLOODML/issues",
         "Documentation": "https://floodml.readthedocs.io/",
     },
     classifiers=[

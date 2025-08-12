@@ -4,9 +4,9 @@
 
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://github.com/yourusername/floodml/workflows/CI/badge.svg)](https://github.com/yourusername/floodml/actions)
+[![Build Status](https://github.com/rmkenv/FLOODML/workflows/CI/badge.svg)](https://github.com/rmkenv/FLOODML/actions)
 [![Documentation Status](https://readthedocs.org/projects/floodml/badge/?version=latest)](https://floodml.readthedocs.io/en/latest/?badge=latest)
-[![codecov](https://codecov.io/gh/yourusername/floodml/branch/main/graph/badge.svg)](https://codecov.io/gh/yourusername/floodml)
+[![codecov](https://codecov.io/gh/rmkenv/FLOODML/branch/main/graph/badge.svg)](https://codecov.io/gh/rmkenv/FLOODML)
 
 FloodML is a comprehensive Python package for predicting flood events using machine learning techniques. It integrates real-time data from USGS streamflow gauges and National Weather Service forecasts to provide scientifically rigorous flood probability predictions.
 
@@ -29,7 +29,7 @@ pip install floodml
 
 For development installation:
 ```bash
-git clone https://github.com/yourusername/floodml.git
+git clone https://github.com/rmkenv/FLOODML.git
 cd floodml
 pip install -e ".[dev]"
 ```
@@ -157,7 +157,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ### Quick Development Setup
 ```bash
-git clone https://github.com/yourusername/floodml.git
+git clone https://github.com/rmkenv/FLOODML.git
 cd floodml
 python -m venv floodml-env
 source floodml-env/bin/activate  # On Windows: floodml-env\\Scripts\\activate
@@ -184,8 +184,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - 📧 Email: info@floodml.org
-- 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/floodml/discussions)
-- 🐛 Bug Reports: [GitHub Issues](https://github.com/yourusername/floodml/issues)
+- 💬 Discussions: [GitHub Discussions](https://github.com/rmkenv/FLOODML/discussions)
+- 🐛 Bug Reports: [GitHub Issues](https://github.com/rmkenv/FLOODML/issues)
 - 📖 Documentation: [ReadTheDocs](https://floodml.readthedocs.io/)
 
 ## ⚠️ Disclaimer
