@@ -183,7 +183,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- 📧 Email: info@floodml.org
+- 📧 Email: consultrmk@gmail.com
 - 💬 Discussions: [GitHub Discussions](https://github.com/rmkenv/FLOODML/discussions)
 - 🐛 Bug Reports: [GitHub Issues](https://github.com/rmkenv/FLOODML/issues)
 - 📖 Documentation: [ReadTheDocs](https://floodml.readthedocs.io/)
