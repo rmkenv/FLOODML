@@ -17,12 +17,16 @@ def basic_flood_prediction_example():
         usgs_site="01438500",
         flood_stage_ft=25.0,  # NOAA flood stage for this gauge
         model="rf"            # Random Forest (fastest for demo)
+        n_estimators=200,
+        max_depth=15
     )
     
     print(f"✅ Initialized predictor for USGS site {predictor.usgs_site}")
     print(f"📍 Location: {predictor.lat:.4f}, {predictor.lon:.4f}")
     print(f"⚠️  Flood stage: {predictor.flood_stage_ft} feet")
-    
+    print("🔧 Training with hyperparameter optimization...")
+    predictor.train(..., optimize_hyperparameters=True)
+
     # Train model on recent data (last 2 years)
     print("\n📚 Training model...")
     end_date = datetime.now().strftime('%Y-%m-%d')
